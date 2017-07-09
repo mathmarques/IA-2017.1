@@ -29,5 +29,7 @@ State* Backtracking::backtraking(State* state){
         	return child;
     }
 
+    delete state;
+
     return nullptr;
 }
