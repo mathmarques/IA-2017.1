@@ -40,12 +40,12 @@ void Algorithm::printStatistics(){
     cout << " - Elapsed time(seconds): " << fixed << this->elapsedSeconds << endl;
     cout << " - Expanded nodes: " << this->expanded << endl;
     cout << " - Visited nodes: " << this->visited << endl;
-    cout << " - Average branching factor: " << "TO-DO" << endl;
-    if(solution != nullptr) {
-        cout << " - Solution depth: " << solution->depth << endl;
-        cout << " - Solution cost: " << solution->cost << endl;
+    cout << " - Average branching factor: " << fixed << this->expanded / (double) this->visited << endl;
+    if(this->solution != nullptr) {
+        cout << " - Solution depth: " << this->solution->depth << endl;
+        cout << " - Solution cost: " << this->solution->cost << endl;
         cout << " - Solution path: " << endl;
-        stack<State*> path = solution->getPath();
+        stack<State*> path = this->solution->getPath();
         while(!path.empty()){
             cout << "    " << path.top()->ruler << endl;
             path.pop();
