@@ -23,7 +23,6 @@ State::State(State* parent, int newEmptyPosition){
 	this->depth = parent->depth + 1;
 	this->emptyPosition = newEmptyPosition;
 	this->cost = parent->cost + abs(parent->emptyPosition - newEmptyPosition);
-
 	this->ruler = parent->ruler;
 	swap(this->ruler[parent->emptyPosition], this->ruler[newEmptyPosition]);
 

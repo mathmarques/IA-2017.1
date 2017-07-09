@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -O2 -std=c++11 
+CFLAGS=-c -O2 -std=c++11 -m64
 LDFLAGS= -lm
 SOURCES=main.cpp State.cpp Algorithms/Algorithm.cpp Algorithms/Backtracking.cpp Algorithms/BreadthFirstSearch.cpp Algorithms/OrderedSearch.cpp Algorithms/DepthFirstSearch.cpp Algorithms/AStar.cpp Algorithms/GreedySearch.cpp Algorithms/IterativeDAstar.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
