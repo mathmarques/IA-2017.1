@@ -10,7 +10,7 @@ void DepthFirstSearch::solve(){
     State *child;
 
     s.push(this->root);
-    this->memoryStates[this->root->ruler] = this->root;
+    this->memoryStates[this->root->ruler] = this->root->cost;
     do {
         state = s.top();
         s.pop();
@@ -27,7 +27,7 @@ void DepthFirstSearch::solve(){
             if(this->memoryStates.count(child->ruler) > 0){
                 delete child;  
             } else {
-                this->memoryStates[child->ruler] = child;
+                this->memoryStates[child->ruler] = child->cost;
                 s.push(child);
             }
         }

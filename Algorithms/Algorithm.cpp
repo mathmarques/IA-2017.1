@@ -55,14 +55,7 @@ void Algorithm::printStatistics(){
     }
 }
 
-void Algorithm::clearMemoryStates(){
-    for(unordered_map<string, State*>::iterator it = this->memoryStates.begin(); it != this->memoryStates.end(); ++it) { 
-       delete it->second;
-    }
-    this->memoryStates.clear();
-}
-
 Algorithm::~Algorithm() {
     delete this->root;
-    this->clearMemoryStates();
+    this->memoryStates.clear();
 }

@@ -22,7 +22,7 @@ public:
 	State *root = nullptr;
 	State *solution = nullptr;
 
-	unordered_map<string, State*> memoryStates;
+	unordered_map<string, int> memoryStates;
 
 	unsigned long long int visited = 0;
 	unsigned long long int expanded = 0;
@@ -31,7 +31,6 @@ public:
 	bool readFromFile(string file);
 	void run();
 	void printStatistics();
-	void clearMemoryStates();
 
 	virtual string getName() = 0;
 };

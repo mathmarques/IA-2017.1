@@ -28,7 +28,7 @@ void GreedySearch::solve(){
         }
 
         this->visited++;
-        this->memoryStates[state->ruler] = state;
+        this->memoryStates[state->ruler] = state->getHeuristicValue();
 
         if(state->isSolution()) {
             this->solution = state;

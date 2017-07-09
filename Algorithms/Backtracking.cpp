@@ -10,7 +10,7 @@ void Backtracking::solve(){
 
 State* Backtracking::backtraking(State* state){
 	this->visited++;
-	this->memoryStates[state->ruler] = state;
+	this->memoryStates[state->ruler] = state->cost;
 
     if(state->isSolution())
         return state;

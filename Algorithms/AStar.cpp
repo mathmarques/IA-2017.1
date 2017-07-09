@@ -28,7 +28,7 @@ void AStar::solve(){
         }
 
         this->visited++;
-        this->memoryStates[state->ruler] = state;
+        this->memoryStates[state->ruler] = state->getF();
 
         if(state->isSolution()) {
             this->solution = state;

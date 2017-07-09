@@ -27,7 +27,7 @@ void OrderedSearch::solve(){
         }
 
         this->visited++;
-        this->memoryStates[state->ruler] = state;
+        this->memoryStates[state->ruler] = state->cost;
 
         if(state->isSolution()) {
             this->solution = state;

@@ -107,7 +107,7 @@ int main(int argC, const char * argV[]) {
 
     if(debug) {
         algorithm->run();
-        cout.precision(7);
+        cout.precision(15);
         cout << algorithm->getName() << ";" 
         << algorithm->root->n << ";"
         << fixed << algorithm->elapsedSeconds << ";" 
