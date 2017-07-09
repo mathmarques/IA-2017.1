@@ -100,15 +100,27 @@ int main(int argC, const char * argV[]) {
     if(process != 0)
         return process;
 
-    //Run
-    cout << "Solving using Algorithm: " << algorithm->getName() << " ..." << endl;
     if(!algorithm->readFromFile(file)){
         cout << "Failed to read the file: " << file << endl;
         return 1;
     }
 
-    algorithm->run();
-    algorithm->printStatistics();
+    if(debug) {
+        algorithm->run();
+        cout.precision(5);
+        cout << algorithm->getName() << ";" 
+        << algorithm->elapsedSeconds << ";" 
+        << algorithm->expanded << ";" 
+        << algorithm->visited << ";" 
+        << fixed << algorithm->expanded / (double) algorithm->visited << ";"
+        << algorithm->solution->depth << ";"
+        << algorithm->solution->cost << endl;
+    } else {
+        //Run
+        cout << "Solving using Algorithm: " << algorithm->getName() << " ..." << endl;
+        algorithm->run();
+        algorithm->printStatistics();
+    }    
 
     return 0;
 }
