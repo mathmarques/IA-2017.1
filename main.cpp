@@ -107,14 +107,15 @@ int main(int argC, const char * argV[]) {
 
     if(debug) {
         algorithm->run();
-        cout.precision(5);
+        cout.precision(7);
         cout << algorithm->getName() << ";" 
-        << algorithm->elapsedSeconds << ";" 
+        << algorithm->root->n << ";"
+        << fixed << algorithm->elapsedSeconds << ";" 
         << algorithm->expanded << ";" 
         << algorithm->visited << ";" 
         << fixed << algorithm->expanded / (double) algorithm->visited << ";"
         << algorithm->solution->depth << ";"
-        << algorithm->solution->cost << endl;
+        << algorithm->solution->cost;
     } else {
         //Run
         cout << "Solving using Algorithm: " << algorithm->getName() << " ..." << endl;
