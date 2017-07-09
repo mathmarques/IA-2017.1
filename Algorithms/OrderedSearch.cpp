@@ -5,7 +5,10 @@ string OrderedSearch::getName(){
 }
 
 bool OrderedSearch::compare(State *a, State *b){
-    return a->cost > b->cost;
+    if(a->cost == b->cost)
+        return a->depth > b->depth;
+    else
+        return a->cost > b->cost;
 }
 
 void OrderedSearch::solve(){
@@ -21,7 +24,7 @@ void OrderedSearch::solve(){
         if(visitedStates.count(state->ruler) > 0){
             continue;
         }
-                
+
         this->visited++;
         visitedStates[state->ruler] = state;
 

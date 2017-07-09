@@ -5,7 +5,10 @@ string GreedySearch::getName(){
 }
 
 bool GreedySearch::compare(State *a, State *b){
-    return a->getHeuristicValue() > b->getHeuristicValue();
+    if(a->getHeuristicValue() == b->getHeuristicValue())
+        return a->depth > b->depth;
+    else
+        return a->getHeuristicValue() > b->getHeuristicValue();
 }
 
 void GreedySearch::solve(){
@@ -22,7 +25,7 @@ void GreedySearch::solve(){
         if(visitedStates.count(state->ruler) > 0){
             continue;
         }
-        
+
         this->visited++;
         visitedStates[state->ruler] = state;
 

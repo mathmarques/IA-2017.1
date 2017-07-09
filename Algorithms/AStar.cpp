@@ -5,7 +5,10 @@ string AStar::getName(){
 }
 
 bool AStar::compare(State *a, State *b){
-    return a->getF() > b->getF();
+    if(a->getF() == b->getF())
+        return a->depth > b->depth;
+    else
+        return a->getF() > b->getF();
 }
 
 void AStar::solve(){
@@ -22,7 +25,7 @@ void AStar::solve(){
         if(visitedStates.count(state->ruler) > 0){
             continue;
         }
-        
+
         this->visited++;
         visitedStates[state->ruler] = state;
 
