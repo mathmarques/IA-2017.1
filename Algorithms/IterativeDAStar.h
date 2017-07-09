@@ -16,7 +16,6 @@ private:
 	void solve();
 public:
 	string getName();
-	static bool compare(State *a, State *b);
 };
 
 #endif // ITERATIVEDASTAR_H_INCLUDED

@@ -32,10 +32,7 @@ State::State(State* parent, int newEmptyPosition){
 }
 
 State::~State(){
-	for (vector<State*>::iterator it = this->children.begin() ; it != this->children.end(); ++it) {
-     delete (*it);
-   } 
-   this->children.clear();
+	this->reset();
 }
 
 vector<State*> State::getChildren(){
@@ -138,3 +135,17 @@ stack<State*> State::getPath(){
 
 	return path;
 }
+
+void State::reset() {
+	for (vector<State*>::iterator it = this->children.begin() ; it != this->children.end(); ++it) {
+		delete (*it);
+	}
+	this->children.clear();
+	this->depth = 0;
+	this->cost = 0;
+	this->heuristicCalculated = false;
+	this->heuristicValue = 0;
+	this->allChildrenFetched = false;
+	this->childIt = 0;
+}
+

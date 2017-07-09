@@ -4,10 +4,43 @@ string IterativeDAStar::getName(){
 	return "Iterative Deepening A Star";
 }
 
-bool IterativeDAStar::compare(State *a, State *b){
-    return true; //TODO
-}
-
 void IterativeDAStar::solve(){
-	//TODO
+	int threshold = this->root->getF();
+	int oldThreshold = -1;
+	int min = -1;
+
+	this->visited++;
+	State *state = this->root;
+	State *child;
+	while(true){
+		if(threshold == oldThreshold) //Fail to found solution
+    		break;
+
+    	if(state->isSolution() && state->getF() <= threshold) { //Solution found
+    		this->solution = state;
+    		break;
+    	}
+
+    	if(state->getF() > threshold) {
+    		if(state->getF() < min || min == -1)
+    			min = state->getF();
+    		state = state->parent;
+    	}
+
+    	if((child = state->getNextChild())) {
+    		state = child;
+    		this->visited++;
+    		this->expanded++;
+    	} else {
+    		if(state == this->root) {
+    			oldThreshold = threshold;
+    			threshold = min;
+    			min = -1;
+    			state->reset();
+    		} else 
+    			state = state->parent;
+    	}
+	}
+
+	return;
 }

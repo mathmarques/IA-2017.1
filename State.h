@@ -40,6 +40,7 @@ public:
 	int getF();
 	stack<State*> getPath();
 	bool isSolution();
+	void reset();
 
 };
 

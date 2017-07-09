@@ -24,8 +24,8 @@ public:
 
 	unordered_map<string, State*> memoryStates;
 
-	long long int visited = 0;
-	long long int expanded = 0;
+	unsigned long long int visited = 0;
+	unsigned long long int expanded = 0;
 	double elapsedSeconds = 0;
 
 	bool readFromFile(string file);
