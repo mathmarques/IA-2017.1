@@ -13,6 +13,8 @@ using namespace std;
 class State {
 private:
 	int heuristicValue;	
+	bool heuristicCalculated;
+	
 public:
 	int n;
 	string ruler;

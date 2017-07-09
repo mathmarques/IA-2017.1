@@ -6,7 +6,8 @@ State::State(int n, string ruler, int emptyPosition){
 	this->emptyPosition = emptyPosition;
 	this->depth = 0;
 	this->cost = 0;
-	this->heuristicValue = -1;
+	this->heuristicCalculated = false;
+	this->heuristicValue = 0;
 	this->allChildrenFetched = false;
 	this->childIt = 0;
 	this->parent = nullptr;
@@ -14,7 +15,8 @@ State::State(int n, string ruler, int emptyPosition){
 
 State::State(State* parent, int newEmptyPosition){
 	this->n = parent->n;
-	this->heuristicValue = -1;
+	this->heuristicCalculated = false;
+	this->heuristicValue = 0;
 	this->allChildrenFetched = false;
 	this->childIt = 0;
 
@@ -66,7 +68,21 @@ State* State::getNextChild(){
 }
 
 int State::getHeuristicValue(){
-	return -1;
+	if(heuristicCalculated)
+		return this->heuristicValue;
+
+	int itUntil = this->n;
+	if(this->emptyPosition < this->n)
+		itUntil++;
+
+	int hValue = 0;
+	for(int i = 0; i < itUntil; i++)
+		if(this->ruler[i] == 'A')
+			hValue++;
+
+	this->heuristicValue = hValue;
+	
+	return hValue;
 }
 
 bool State::isSolution(){
