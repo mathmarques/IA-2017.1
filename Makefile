@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -O3 -std=c++11 -m64
 LDFLAGS= -lm -m64
-SOURCES=main.cpp State.cpp Algorithms/Algorithm.cpp Algorithms/Backtracking.cpp Algorithms/BreadthFirstSearch.cpp Algorithms/OrderedSearch.cpp Algorithms/DepthFirstSearch.cpp Algorithms/AStar.cpp Algorithms/GreedySearch.cpp Algorithms/IterativeDAstar.cpp
+SOURCES=main.cpp State.cpp Algorithms/Algorithm.cpp Algorithms/Backtracking.cpp Algorithms/BreadthFirstSearch.cpp Algorithms/OrderedSearch.cpp Algorithms/DepthFirstSearch.cpp Algorithms/AStar.cpp Algorithms/GreedySearch.cpp Algorithms/IterativeDAStar.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=PuzzleSolver
 
