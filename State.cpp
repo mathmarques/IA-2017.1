@@ -28,7 +28,8 @@ State::State(State* parent, int newEmptyPosition){
 	swap(this->ruler[parent->emptyPosition], this->ruler[newEmptyPosition]);
 
 	this->parent = parent;
-	parent->children.push_back(this);
+	if(State::fillChildren)
+		parent->children.push_back(this);
 }
 
 State::~State(){
@@ -36,13 +37,28 @@ State::~State(){
 }
 
 vector<State*> State::getChildren(){
-	if(!this->allChildrenFetched) {
+	if(State::fillChildren){
+		if(!this->allChildrenFetched) {
+			State *fetch;
+			while((fetch = this->getNextChild()))
+        		continue;
+		}
+
+		return this->children;
+	} else {
+		int saveIt = this->childIt;
+
+		vector<State*> children;
+		this->childIt = 0;
 		State *fetch;
 		while((fetch = this->getNextChild()))
-        	continue;
-	}
+        	children.push_back(fetch);
 
-	return this->children;
+        this->childIt = saveIt;
+        this->allChildrenFetched = false;
+
+        return children;
+	}
 }
 
 State* State::getNextChild(){
@@ -80,12 +96,16 @@ int State::getHeuristicValue(){
 		if(this->ruler[i] == 'A')
 			hValue++;
 
+	this->heuristicCalculated = true;
 	this->heuristicValue = hValue;
 	
 	return hValue;
 }
 
 bool State::isSolution(){
+	if(heuristicCalculated)
+		return this->heuristicValue == 0;
+
 	bool isSol = true;
 
 	int itUntil = this->n;

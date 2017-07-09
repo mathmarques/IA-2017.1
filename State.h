@@ -29,6 +29,8 @@ public:
 	bool allChildrenFetched;
 	int childIt;
 
+	static const bool fillChildren = false;
+
 	State(int n, string ruler, int emptyPosition);
 	State(State* parent, int newEmptyPosition);
 	~State();
