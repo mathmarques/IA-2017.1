@@ -40,7 +40,7 @@ void Algorithm::printStatistics(){
     cout << " - Elapsed time(seconds): " << fixed << this->elapsedSeconds << endl;
     cout << " - Expanded nodes: " << this->expanded << endl;
     cout << " - Visited nodes: " << this->visited << endl;
-    cout << " - Average branching factor: " << endl;
+    cout << " - Average branching factor: " << "TO-DO" << endl;
     if(solution != nullptr) {
         cout << " - Solution depth: " << solution->depth << endl;
         cout << " - Solution cost: " << solution->cost << endl;
