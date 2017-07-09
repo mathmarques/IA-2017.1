@@ -54,3 +54,7 @@ void Algorithm::printStatistics(){
         cout << " !! Couldn't find a solution !!" << endl;
     }
 }
+
+Algorithm::~Algorithm() {
+    delete this->root;
+}

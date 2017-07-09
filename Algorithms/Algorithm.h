@@ -17,6 +17,8 @@ class Algorithm {
 private:
 	virtual void solve() = 0;
 public:
+	~Algorithm();
+	
 	State *root = nullptr;
 	State *solution = nullptr;
 

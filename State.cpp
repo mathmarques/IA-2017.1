@@ -33,7 +33,10 @@ State::State(State* parent, int newEmptyPosition){
 }
 
 State::~State(){
-
+	for (vector<State*>::iterator it = this->children.begin() ; it != this->children.end(); ++it) {
+     delete (*it);
+   } 
+   this->children.clear();
 }
 
 vector<State*> State::getChildren(){
