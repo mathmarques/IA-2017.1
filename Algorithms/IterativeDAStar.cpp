@@ -11,7 +11,7 @@ void IterativeDAStar::solve(){
 
 	this->visited++;
 	State *state = this->root;
-	State *child;
+	State *child, *parent;
 	while(true){
 		if(threshold == oldThreshold) //Fail to found solution
     		break;
@@ -24,7 +24,9 @@ void IterativeDAStar::solve(){
     	if(state->getF() > threshold) {
     		if(state->getF() < min || min == -1)
     			min = state->getF();
-    		state = state->parent;
+            parent = state->parent;
+    		delete state;
+            state = parent;
     	}
 
     	if((child = state->getNextChild())) {
@@ -33,14 +35,17 @@ void IterativeDAStar::solve(){
     		this->expanded++;
     	} else {
     		if(state == this->root) {
-    			oldThreshold = threshold;
-    			threshold = min;
-    			min = -1;
-    			state->reset();
-    		} else 
-    			state = state->parent;
-    	}
-	}
+                oldThreshold = threshold;
+                threshold = min;
+                min = -1;
+                state->reset();
+            } else {
+                parent = state->parent;
+                delete state;
+                state = parent;
+            }
+        }
+    }
 
 	return;
 }
