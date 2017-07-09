@@ -19,6 +19,10 @@ void AStar::solve(){
         state = pq.top();
         pq.pop();
 
+        if(visitedStates.count(state->ruler) > 0){
+            continue;
+        }
+        
         this->visited++;
         visitedStates[state->ruler] = state;
 
@@ -29,10 +33,7 @@ void AStar::solve(){
 
         while((child = state->getNextChild())) {
             this->expanded++;
-            if(!(visitedStates.count(child->ruler) > 0))
-                pq.push(child);
-            else
-                delete child;
+            pq.push(child);
         }
     } while (!pq.empty());
 }
