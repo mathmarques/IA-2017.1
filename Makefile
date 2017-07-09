@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -O2 -std=c++11 
 LDFLAGS= -lm
-SOURCES=main.cpp State.cpp Algorithms/Algorithm.cpp Algorithms/Backtracking.cpp
+SOURCES=main.cpp State.cpp Algorithms/Algorithm.cpp Algorithms/Backtracking.cpp Algorithms/BreadthFirstSearch.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=PuzzleSolver
 

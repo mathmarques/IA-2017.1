@@ -8,6 +8,7 @@
 
 //Algorithms
 #include "Algorithms/Backtracking.h"
+#include "Algorithms/BreadthFirstSearch.h"
 
 using namespace std;
 
@@ -23,7 +24,8 @@ static void usage()
         "    -?              Show this help\n" <<
         "    -debug          Debug Mode\n\n" <<
         "Algorithms:\n" <<
-        "     back           Backtracking\n\n";
+        "     back           Backtracking\n" <<
+        "     bfs            Breadth First Search\n\n";
 }
 
 static int processArgs(int argC, const char * argV[]) {
@@ -56,6 +58,8 @@ static int processArgs(int argC, const char * argV[]) {
 
     if(!strcmp (argV[argInd], "back")) {
         algorithm = new Backtracking();
+    } else if(!strcmp (argV[argInd], "bfs")) {
+        algorithm = new BreadthFirstSearch();
     } else {
         cout << "Invalid Algorithm!!" << endl;
         usage();
