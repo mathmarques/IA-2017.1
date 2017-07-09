@@ -1,15 +1,15 @@
-#include "OrderedSearch.h"
+#include "AStar.h"
 
-string OrderedSearch::getName(){
-	return "Ordered Search";
+string AStar::getName(){
+	return "A Star";
 }
 
-bool OrderedSearch::compare(State *a, State *b){
-    return a->cost > b->cost;
+bool AStar::compare(State *a, State *b){
+    return (a->cost + a->getHeuristicValue()) > (b->cost + b->getHeuristicValue());
 }
 
-void OrderedSearch::solve(){
-	priority_queue<State*, vector<State*>, bool (*)(State*, State*)> pq(OrderedSearch::compare);
+void AStar::solve(){
+	priority_queue<State*, vector<State*>, bool (*)(State*, State*)> pq(AStar::compare);
     State *state;
     State *child;
 
@@ -18,7 +18,7 @@ void OrderedSearch::solve(){
     do {
         state = pq.top();
         pq.pop();
-        
+
         this->visited++;
         visitedStates[state->ruler] = state;
 

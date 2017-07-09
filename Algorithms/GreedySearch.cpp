@@ -1,15 +1,15 @@
-#include "OrderedSearch.h"
+#include "GreedySearch.h"
 
-string OrderedSearch::getName(){
-	return "Ordered Search";
+string GreedySearch::getName(){
+	return "Greedy Search";
 }
 
-bool OrderedSearch::compare(State *a, State *b){
-    return a->cost > b->cost;
+bool GreedySearch::compare(State *a, State *b){
+    return a->getHeuristicValue() > b->getHeuristicValue();
 }
 
-void OrderedSearch::solve(){
-	priority_queue<State*, vector<State*>, bool (*)(State*, State*)> pq(OrderedSearch::compare);
+void GreedySearch::solve(){
+	priority_queue<State*, vector<State*>, bool (*)(State*, State*)> pq(GreedySearch::compare);
     State *state;
     State *child;
 
@@ -18,7 +18,7 @@ void OrderedSearch::solve(){
     do {
         state = pq.top();
         pq.pop();
-        
+
         this->visited++;
         visitedStates[state->ruler] = state;
 
