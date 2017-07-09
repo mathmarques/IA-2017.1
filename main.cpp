@@ -9,6 +9,7 @@
 //Algorithms
 #include "Algorithms/Backtracking.h"
 #include "Algorithms/BreadthFirstSearch.h"
+#include "Algorithms/OrderedSearch.h"
 
 using namespace std;
 
@@ -24,8 +25,9 @@ static void usage()
         "    -?              Show this help\n" <<
         "    -debug          Debug Mode\n\n" <<
         "Algorithms:\n" <<
-        "     back           Backtracking\n" <<
-        "     bfs            Breadth First Search\n\n";
+        "     BT             Backtracking\n" <<
+        "     BFS            Breadth First Search\n" <<
+        "     OS             Ordered Search\n\n";
 }
 
 static int processArgs(int argC, const char * argV[]) {
@@ -56,10 +58,12 @@ static int processArgs(int argC, const char * argV[]) {
         return 1;
     }
 
-    if(!strcmp (argV[argInd], "back")) {
+    if(!strcmp (argV[argInd], "BT")) {
         algorithm = new Backtracking();
-    } else if(!strcmp (argV[argInd], "bfs")) {
+    } else if(!strcmp (argV[argInd], "BFS")) {
         algorithm = new BreadthFirstSearch();
+    } else if(!strcmp (argV[argInd], "OS")) {
+        algorithm = new OrderedSearch();
     } else {
         cout << "Invalid Algorithm!!" << endl;
         usage();
