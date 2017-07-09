@@ -20,8 +20,10 @@ State* Backtracking::backtraking(State* state){
     {
         this->expanded++;
 
-        if(this->memoryStates.count(child->ruler) > 0) //Already visited!
+        if(this->memoryStates.count(child->ruler) > 0){
+            delete child;
         	continue;
+        }
 
         if((child = this->backtraking(child)))
         	return child;

@@ -23,6 +23,7 @@ void GreedySearch::solve(){
         pq.pop();
 
         if(this->memoryStates.count(state->ruler) > 0){
+            delete state;
             continue;
         }
 
