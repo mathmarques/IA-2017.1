@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <fstream>
 #include <unordered_map>
+#include <ctime>
 
 #include "../State.h"
 
@@ -23,6 +24,7 @@ public:
 
 	int visited = 0;
 	int expanded = 0;
+	double elapsedSeconds = 0;
 
 	bool readFromFile(string file);
 	void run();

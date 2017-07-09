@@ -26,12 +26,18 @@ bool Algorithm::readFromFile(string file){
 }
 
 void Algorithm::run(){
+    clock_t begin = clock();
+
     this->solve();
+
+    clock_t end = clock();
+    this->elapsedSeconds = double(end - begin) / CLOCKS_PER_SEC;  
 }
 
 void Algorithm::printStatistics(){
     cout << "Statistics:" << endl;
-    cout << " - Elapsed time: " << endl;
+    cout.precision(5);
+    cout << " - Elapsed time(seconds): " << fixed << this->elapsedSeconds << endl;
     cout << " - Expanded nodes: " << this->expanded << endl;
     cout << " - Visited nodes: " << this->visited << endl;
     cout << " - Average branching factor: " << endl;
