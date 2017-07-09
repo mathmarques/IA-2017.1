@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io/api/c,c++,xcode,codeblocks,sublimetext
 
 PuzzleSolver
+results/
 
 ### C ###
 # Prerequisites
