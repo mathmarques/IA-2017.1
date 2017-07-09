@@ -24,11 +24,12 @@ void DepthFirstSearch::solve(){
 
         while((child = state->getNextChild())) {
             this->expanded++;
-            if(!(this->memoryStates.count(child->ruler) > 0)){
-            	this->memoryStates[state->ruler] = state;
+            if(this->memoryStates.count(child->ruler) > 0){
+                delete child;  
+            } else {
+                this->memoryStates[child->ruler] = child;
                 s.push(child);
-            } else
-                delete child;
+            }
         }
     } while (!s.empty());
 }
