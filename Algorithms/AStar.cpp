@@ -22,12 +22,12 @@ void AStar::solve(){
         state = pq.top();
         pq.pop();
 
-        if(visitedStates.count(state->ruler) > 0){
+        if(this->memoryStates.count(state->ruler) > 0){
             continue;
         }
 
         this->visited++;
-        visitedStates[state->ruler] = state;
+        this->memoryStates[state->ruler] = state;
 
         if(state->isSolution()) {
             this->solution = state;

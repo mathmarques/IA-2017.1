@@ -1,22 +1,22 @@
-#ifndef DEPTHFIRSTSEARCH_H_INCLUDED
-#define DEPTHFIRSTSEARCH_H_INCLUDED
+#ifndef ITERATIVEDASTAR_H_INCLUDED
+#define ITERATIVEDASTAR_H_INCLUDED
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <stack>
 
 #include "Algorithm.h"
 #include "../State.h"
 
 using namespace std;
 
-class DepthFirstSearch: public Algorithm {
+class IterativeDAStar: public Algorithm {
 private:
 	void solve();
 public:
 	string getName();
+	static bool compare(State *a, State *b);
 };
 
-#endif // DEPTHFIRSTSEARCH_H_INCLUDED
+#endif // ITERATIVEDASTAR_H_INCLUDED

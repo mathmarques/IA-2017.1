@@ -10,13 +10,12 @@ void BreadthFirstSearch::solve(){
     State *child;
 
     q.push(this->root);
-    
+    this->memoryStates[this->root->ruler] = this->root;
     do {
         state = q.front();
         q.pop();
 
         this->visited++;
-        visitedStates[state->ruler] = state;
 
         if(state->isSolution()) {
             this->solution = state;
@@ -25,8 +24,12 @@ void BreadthFirstSearch::solve(){
 
         while((child = state->getNextChild())) {
             this->expanded++;
-            if(!(visitedStates.count(child->ruler) > 0))
+            if(!(this->memoryStates.count(child->ruler) > 0)){
+                this->memoryStates[state->ruler] = state;
                 q.push(child);
+            } else
+                delete child;
+                
         }
     } while (!q.empty());
 }

@@ -13,6 +13,7 @@
 #include "Algorithms/GreedySearch.h"
 #include "Algorithms/AStar.h"
 #include "Algorithms/DepthFirstSearch.h"
+#include "Algorithms/IterativeDAStar.h"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ static void usage()
         "     OS             Ordered Search\n" <<
         "     GS             Greedy Search\n" <<
         "     AS             A Star\n" <<
-        "     IDA            IDA*\n\n";
+        "     IDA            Iterative Deepening A Star\n\n";
 }
 
 static int processArgs(int argC, const char * argV[]) {
@@ -77,7 +78,9 @@ static int processArgs(int argC, const char * argV[]) {
         algorithm = new GreedySearch();
     } else if(!strcmp (argV[argInd], "AS")) {
         algorithm = new AStar();
-    } else{
+    } else if (!strcmp (argV[argInd], "IDA")) {
+        algorithm = new IterativeDAStar();
+    } else {
         cout << "Invalid Algorithm!!" << endl;
         usage();
         return 3; 

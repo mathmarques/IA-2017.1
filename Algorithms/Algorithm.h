@@ -20,7 +20,7 @@ public:
 	State *root = nullptr;
 	State *solution = nullptr;
 
-	unordered_map<string, State*> visitedStates;
+	unordered_map<string, State*> memoryStates;
 
 	long long int visited = 0;
 	long long int expanded = 0;

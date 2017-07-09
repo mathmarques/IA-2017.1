@@ -10,7 +10,7 @@ void Backtracking::solve(){
 
 State* Backtracking::backtraking(State* state){
 	this->visited++;
-	visitedStates[state->ruler] = state;
+	this->memoryStates[state->ruler] = state;
 
     if(state->isSolution())
         return state;
@@ -20,7 +20,7 @@ State* Backtracking::backtraking(State* state){
     {
         this->expanded++;
 
-        if(visitedStates.count(child->ruler) > 0) //Already visited!
+        if(this->memoryStates.count(child->ruler) > 0) //Already visited!
         	continue;
 
         if((child = this->backtraking(child)))
