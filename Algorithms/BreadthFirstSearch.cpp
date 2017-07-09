@@ -27,6 +27,8 @@ void BreadthFirstSearch::solve(){
             this->expanded++;
             if(!(visitedStates.count(child->ruler) > 0))
                 q.push(child);
+            else
+                delete child;
         }
     } while (!q.empty());
 }

@@ -22,8 +22,8 @@ public:
 
 	unordered_map<string, State*> visitedStates;
 
-	int visited = 0;
-	int expanded = 0;
+	long long int visited = 0;
+	long long int expanded = 0;
 	double elapsedSeconds = 0;
 
 	bool readFromFile(string file);

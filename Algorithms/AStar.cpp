@@ -31,6 +31,8 @@ void AStar::solve(){
             this->expanded++;
             if(!(visitedStates.count(child->ruler) > 0))
                 pq.push(child);
+            else
+                delete child;
         }
     } while (!pq.empty());
 }
