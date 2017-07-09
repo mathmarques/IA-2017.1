@@ -141,6 +141,7 @@ void State::reset() {
 		delete (*it);
 	}
 	this->children.clear();
+	
 	this->depth = 0;
 	this->cost = 0;
 	this->heuristicCalculated = false;

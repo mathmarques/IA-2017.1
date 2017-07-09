@@ -11,7 +11,9 @@ void IterativeDAStar::solve(){
 
 	this->visited++;
 	State *state = this->root;
-	State *child, *parent;
+	State *child;
+    this->memoryStates[this->root->ruler] = this->root;
+
 	while(true){
 		if(threshold == oldThreshold) //Fail to found solution
     		break;
@@ -24,25 +26,38 @@ void IterativeDAStar::solve(){
     	if(state->getF() > threshold) {
     		if(state->getF() < min || min == -1)
     			min = state->getF();
-            parent = state->parent;
-    		delete state;
-            state = parent;
+            state = state->parent;
     	}
 
-    	if((child = state->getNextChild())) {
+        while((child = state->getNextChild())) {
+            this->expanded++;
+            if(this->memoryStates.count(child->ruler) > 0){
+                if(this->memoryStates[child->ruler]->getF() <= child->getF()) {
+                    delete child;
+                } else {
+                    delete this->memoryStates[child->ruler];
+                    this->memoryStates[child->ruler] = child;
+                    break;
+                }
+            } else {
+                this->memoryStates[child->ruler] = child;
+                break;
+            }
+        }
+
+    	if(child != nullptr) {
     		state = child;
     		this->visited++;
-    		this->expanded++;
     	} else {
     		if(state == this->root) {
                 oldThreshold = threshold;
                 threshold = min;
                 min = -1;
                 state->reset();
+                this->memoryStates.clear();
+                this->memoryStates[this->root->ruler] = this->root;
             } else {
-                parent = state->parent;
-                delete state;
-                state = parent;
+                state = state->parent;
             }
         }
     }

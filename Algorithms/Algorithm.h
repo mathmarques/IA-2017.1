@@ -31,6 +31,7 @@ public:
 	bool readFromFile(string file);
 	void run();
 	void printStatistics();
+	void clearMemoryStates();
 
 	virtual string getName() = 0;
 };
