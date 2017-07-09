@@ -5,7 +5,7 @@ string AStar::getName(){
 }
 
 bool AStar::compare(State *a, State *b){
-    return (a->cost + a->getHeuristicValue()) > (b->cost + b->getHeuristicValue());
+    return a->getF() > b->getF();
 }
 
 void AStar::solve(){

@@ -37,6 +37,7 @@ public:
 	vector<State*> getChildren();
 	State* getNextChild();
 	int getHeuristicValue();
+	int getF();
 	stack<State*> getPath();
 	bool isSolution();
 

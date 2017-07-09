@@ -102,6 +102,10 @@ int State::getHeuristicValue(){
 	return hValue;
 }
 
+int State::getF() {
+	return this->getHeuristicValue() + this->cost;
+}
+
 bool State::isSolution(){
 	if(heuristicCalculated)
 		return this->heuristicValue == 0;
