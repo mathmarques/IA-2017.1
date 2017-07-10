@@ -17,7 +17,6 @@ void GreedySearch::solve(){
     State *child;
 
     pq.push(this->root);
-    
     do {
         state = pq.top();
         pq.pop();

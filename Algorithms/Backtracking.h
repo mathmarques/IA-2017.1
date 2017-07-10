@@ -14,7 +14,7 @@ using namespace std;
 class Backtracking: public Algorithm {
 private:
 	void solve();
-	State* backtraking(State* state);
+	State* backtracking(State* state);
 public:
 	string getName();
 };

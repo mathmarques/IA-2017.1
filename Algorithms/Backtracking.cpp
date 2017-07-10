@@ -5,10 +5,10 @@ string Backtracking::getName(){
 }
 
 void Backtracking::solve(){
-	this->solution = this->backtraking(this->root);
+	this->solution = this->backtracking(this->root);
 }
 
-State* Backtracking::backtraking(State* state){
+State* Backtracking::backtracking(State* state){
 	this->visited++;
 	this->memoryStates[state->ruler] = state->cost;
 
@@ -25,7 +25,7 @@ State* Backtracking::backtraking(State* state){
         	continue;
         }
 
-        if((child = this->backtraking(child)))
+        if((child = this->backtracking(child)))
         	return child;
     }
 
