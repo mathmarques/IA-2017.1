@@ -33,6 +33,7 @@ void IterativeDAStar::solve(){
 
         while((child = state->getNextChild())) {
             this->expanded++;
+            this->visited++;
             if(this->memoryStates.count(child->ruler) > 0 && this->memoryStates[child->ruler] <= child->getF()){
                 delete child;
             } else {
@@ -43,7 +44,6 @@ void IterativeDAStar::solve(){
 
     	if(child != nullptr) {
     		state = child;
-    		this->visited++;
     	} else {
     		if(state == this->root) {
                 oldThreshold = threshold;
